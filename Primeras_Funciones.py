@@ -12,6 +12,8 @@ mensaje()#Aqui la llamada de la funcion
 
 mensaje()#Aqui la llamada de la funcion
 
+print("----------------")
+
 def suma3():#Aqui la llamada de la funcion de una suma de dos numero
 	num1=5
 	num2=2
@@ -20,6 +22,8 @@ def suma3():#Aqui la llamada de la funcion de una suma de dos numero
 suma3()#Aqui la llamada de la funcion de suma
 suma3()
 suma3()#Aqui la llamada de la funcion de suma
+
+print("----------------")
 
 def suma1(num1,num2):#Aqui la llamada de la funcion de una suma de dos numero sin retorno
 	
@@ -30,6 +34,8 @@ suma1(5,7)#Aqui la llamada de la funcion de suma
 suma1(2,3)#Aqui la llamada de la funcion de suma
 
 suma1(35,35)#Aqui la llamada de la funcion de suma
+
+print("----------------")
 
 def suma2(num1,num2):#Aqui la llamada de la funcion de una suma de dos numero con retorno
 	
