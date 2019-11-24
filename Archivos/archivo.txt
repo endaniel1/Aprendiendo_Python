@@ -1,0 +1,4 @@
+Estoy Estudiando Python Desde Hace Más De 2 Semana
+Esta Linea A Sido Modificada Desde Un Archivo Externo 
+Comienzo De Un Texto Agregado
+Y Es Bueno Aprender Algo Nuevo Siempre
