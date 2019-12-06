@@ -5,6 +5,7 @@
 from Funciones_Matematicas import *
 
 sumar(2,2)
-restar(2,1)
+restar(-2.2,0.2)
 multiplicar(2,4)
+
 
