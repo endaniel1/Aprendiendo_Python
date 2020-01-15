@@ -49,12 +49,14 @@ def crear():
 	miConexion=pymysql.connect("localhost","root","","BBDDUsuarioPython")
 	miCursor=miConexion.cursor()
 
-	miCursor.execute("INSERT INTO DATOSUSUARIOS VALUES(NULL,'"+miNombre.get()+
+	datos=miNombre.get(),miPass.get(),miApellido.get(),miDireccion.get(),textComentario.get(1.0,END)
+
+	"""miCursor.execute("INSERT INTO DATOSUSUARIOS VALUES(NULL,'"+miNombre.get()+
 		"','"+miPass.get()+
 		"','"+miApellido.get()+
 		"','"+miDireccion.get()+
-		"','"+textComentario.get(1.0,END)+"')")
-
+		"','"+textComentario.get(1.0,END)+"')")"""
+	miCursor.execute("INSERT INTO DATOSUSUARIOS VALUES(NULL,%s,%s,%s,%s,%s)",(datos))
 	miConexion.commit()
 
 	messagebox.showinfo("BBDD","Registro Insertado Con Exito!")
@@ -83,17 +85,31 @@ def actualizar():
 	miConexion=pymysql.connect("localhost","root","","BBDDUsuarioPython")
 	miCursor=miConexion.cursor()
 
-	miCursor.execute("UPDATE DATOSUSUARIOS SET NOMBRE_USUARIO='"+miNombre.get()+
+	datos=miNombre.get(),miPass.get(),miApellido.get(),miDireccion.get(),textComentario.get(1.0,END)
+
+	"""miCursor.execute("UPDATE DATOSUSUARIOS SET NOMBRE_USUARIO='"+miNombre.get()+
 		"',PASSWORD='"+miPass.get()+
 		"',APELLIDO='"+miApellido.get()+
 		"',DIRECCION='"+miDireccion.get()+
 		"',COMENTARIOS='"+textComentario.get("1.0",END)+
-		"' WHERE ID="+miId.get())
+		"' WHERE ID="+miId.get())"""
+	miCursor.execute("UPDATE DATOSUSUARIOS SET NOMBRE_USUARIO=%s,PASSWORD=%s,APELLIDO=%s,DIRECCION=%s,COMENTARIOS=%s"+
+		" WHERE ID="+miId.get(),(datos)) 
 
 	miConexion.commit()
 
 	messagebox.showinfo("BBDD","Registro Actualizado Con Exito!")
 
+def eliminar():
+
+	miConexion=pymysql.connect("localhost","root","","BBDDUsuarioPython")
+	miCursor=miConexion.cursor()
+
+	miCursor.execute("DELETE FROM DATOSUSUARIOS WHERE ID="+miId.get())
+
+	miConexion.commit()
+
+	messagebox.showinfo("BBDD","Registro Eliminado Con Exito!")
 
 #-------------------------Comienzo de Variables--------------------
 
@@ -120,7 +136,7 @@ crudMenu=Menu(barraMenu,tearoff=0)
 crudMenu.add_command(label="Crear",command=crear)
 crudMenu.add_command(label="Leer",command=leer)
 crudMenu.add_command(label="Actualizar",command=actualizar)
-crudMenu.add_command(label="Borrar")
+crudMenu.add_command(label="Borrar",command=eliminar)
 
 ayudaMenu=Menu(barraMenu,tearoff=0)
 ayudaMenu.add_command(label="Licencia")
@@ -193,7 +209,7 @@ botonLeer.grid(row=1,column=1,sticky="e",padx=10,pady=10)
 botonActualizar=Button(miFrame2,text="Actualizar",command=actualizar)
 botonActualizar.grid(row=1,column=2,sticky="e",padx=10,pady=10)
 
-botonEliminar=Button(miFrame2,text="Eliminar")
+botonEliminar=Button(miFrame2,text="Eliminar",command=eliminar)
 botonEliminar.grid(row=1,column=3,sticky="e",padx=10,pady=10)
 
 
